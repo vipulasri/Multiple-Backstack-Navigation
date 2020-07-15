@@ -33,3 +33,8 @@ So, I achieved that by setting their max lifecycle using `SetMaxLifecycle` to ha
 
 3. I can set custom backpress action before switching tab's navigation. 
 4. ***Brownie Point:*** It supports configuration change and restores the from the same state the navigation was on. 
+
+
+Preview:
+
+![Showcase](art/showcase.gif)
