@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     bottomNavManager?.setupNavController() ?: kotlin.run {
       bottomNavManager = BottomNavManager(
           fragmentManager = supportFragmentManager,
-          containerId = R.id.nav_host_fragment,
+          containerId = R.id.nav_host_container,
           bottomNavigationView = findViewById(R.id.nav_view)
       )
     }
