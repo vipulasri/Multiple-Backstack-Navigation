@@ -9,7 +9,13 @@
     android:id="@+id/home"
     android:name="com.vipulasri.multiplebackstacknavigation.ui.home.HomeFragment"
     android:label="@string/title_home"
-    tools:layout="@layout/fragment_home" />
+    tools:layout="@layout/fragment_home">
+
+    <action
+        android:id="@+id/action_first_screen"
+        app:destination="@id/first_screen"/>
+
+  </fragment>
 
   <fragment
       android:id="@+id/first_screen"
@@ -21,19 +27,6 @@
       android:name="title"
       android:defaultValue="Home Screen 1"
       app:argType="string" />
-
-  </fragment>
-
-  <fragment
-      android:id="@+id/second_screen"
-      android:name="com.vipulasri.multiplebackstacknavigation.ui.title.TitleFragment"
-      android:label="@string/title_home"
-      tools:layout="@layout/fragment_title">
-
-    <argument
-        android:name="title"
-        android:defaultValue="Home Screen 2"
-        app:argType="string" />
 
   </fragment>
 
