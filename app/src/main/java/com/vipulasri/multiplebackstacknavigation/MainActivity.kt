@@ -1,29 +1,43 @@
 package com.vipulasri.multiplebackstacknavigation
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import com.vipulasri.multiplebackstacknavigation.ui.BottomNavManager
 
 class MainActivity : AppCompatActivity() {
+
+  private var bottomNavManager: BottomNavManager? = null
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
-    val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
-    val navController = findNavController(R.id.nav_host_fragment)
-    // Passing each menu ID as a set of Ids because each
-    // menu should be considered as top level destinations.
-    val appBarConfiguration = AppBarConfiguration(
-        setOf(
-            R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
-        )
-    )
-    setupActionBarWithNavController(navController, appBarConfiguration)
-    navView.setupWithNavController(navController)
+    setupNavigationManager()
   }
+
+  private fun setupNavigationManager() {
+    bottomNavManager?.setupNavController() ?: kotlin.run {
+      bottomNavManager = BottomNavManager(
+          fragmentManager = supportFragmentManager,
+          containerId = R.id.nav_host_fragment,
+          bottomNavigationView = findViewById(R.id.nav_view)
+      )
+    }
+  }
+
+  override fun onSaveInstanceState(outState: Bundle) {
+    super.onSaveInstanceState(outState)
+    bottomNavManager?.onSaveInstanceState(outState)
+  }
+
+  override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+    super.onRestoreInstanceState(savedInstanceState)
+    bottomNavManager?.onRestoreInstanceState(savedInstanceState)
+    setupNavigationManager()
+  }
+
+  override fun onBackPressed() {
+    if (bottomNavManager?.onBackPressed() == false) super.onBackPressed()
+  }
+
 }
