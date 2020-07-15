@@ -5,21 +5,10 @@
   android:id="@+id/mobile_navigation"
   app:startDestination="@+id/navigation_home">
 
-  <fragment
-    android:id="@+id/navigation_home"
-    android:name="com.vipulasri.multiplebackstacknavigation.ui.home.HomeFragment"
-    android:label="@string/title_home"
-    tools:layout="@layout/fragment_home" />
+  <include app:graph="@navigation/nav_home" />
 
-  <fragment
-    android:id="@+id/navigation_dashboard"
-    android:name="com.vipulasri.multiplebackstacknavigation.ui.dashboard.DashboardFragment"
-    android:label="@string/title_dashboard"
-    tools:layout="@layout/fragment_dashboard" />
+  <include app:graph="@navigation/nav_dashboard" />
 
-  <fragment
-    android:id="@+id/navigation_notifications"
-    android:name="com.vipulasri.multiplebackstacknavigation.ui.notifications.NotificationsFragment"
-    android:label="@string/title_notifications"
-    tools:layout="@layout/fragment_notifications" />
+  <include app:graph="@navigation/nav_notifications" />
+
 </navigation>

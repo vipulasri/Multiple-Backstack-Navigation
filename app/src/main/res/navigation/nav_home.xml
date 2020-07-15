@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/navigation_home"
+  app:startDestination="@+id/home">
+
+  <fragment
+    android:id="@+id/home"
+    android:name="com.vipulasri.multiplebackstacknavigation.ui.home.HomeFragment"
+    android:label="@string/title_home"
+    tools:layout="@layout/fragment_home" />
+
+  <fragment
+      android:id="@+id/first_screen"
+      android:name="com.vipulasri.multiplebackstacknavigation.ui.title.TitleFragment"
+      android:label="@string/title_home"
+      tools:layout="@layout/fragment_title">
+
+    <argument
+      android:name="title"
+      android:defaultValue="Home Screen 1"
+      app:argType="string" />
+
+  </fragment>
+
+  <fragment
+      android:id="@+id/second_screen"
+      android:name="com.vipulasri.multiplebackstacknavigation.ui.title.TitleFragment"
+      android:label="@string/title_home"
+      tools:layout="@layout/fragment_title">
+
+    <argument
+        android:name="title"
+        android:defaultValue="Home Screen 2"
+        app:argType="string" />
+
+  </fragment>
+
+</navigation>

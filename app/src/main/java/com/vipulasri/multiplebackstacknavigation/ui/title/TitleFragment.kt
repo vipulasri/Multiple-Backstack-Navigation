@@ -8,9 +8,12 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.navArgs
 import com.vipulasri.multiplebackstacknavigation.R
 
 class TitleFragment : Fragment() {
+
+  private val args: TitleFragmentArgs by navArgs()
 
   override fun onCreateView(
     inflater: LayoutInflater,
@@ -25,7 +28,7 @@ class TitleFragment : Fragment() {
 
     val textView = view.findViewById<TextView>(R.id.text_title)
 
-
+    textView.text = args.title
   }
 
 }

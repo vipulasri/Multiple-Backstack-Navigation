@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/navigation_dashboard"
+  app:startDestination="@+id/dashboard">
+
+  <fragment
+    android:id="@+id/dashboard"
+    android:name="com.vipulasri.multiplebackstacknavigation.ui.dashboard.DashboardFragment"
+    android:label="@string/title_dashboard"
+    tools:layout="@layout/fragment_dashboard" />
+
+  <fragment
+      android:id="@+id/first_screen"
+      android:name="com.vipulasri.multiplebackstacknavigation.ui.title.TitleFragment"
+      android:label="@string/title_dashboard"
+      tools:layout="@layout/fragment_title">
+
+    <argument
+      android:name="title"
+      android:defaultValue="Dashboard Screen 1"
+      app:argType="string" />
+
+  </fragment>
+
+  <fragment
+      android:id="@+id/second_screen"
+      android:name="com.vipulasri.multiplebackstacknavigation.ui.title.TitleFragment"
+      android:label="@string/title_dashboard"
+      tools:layout="@layout/fragment_title">
+
+    <argument
+        android:name="title"
+        android:defaultValue="Dashboard Screen 2"
+        app:argType="string" />
+
+  </fragment>
+
+</navigation>
