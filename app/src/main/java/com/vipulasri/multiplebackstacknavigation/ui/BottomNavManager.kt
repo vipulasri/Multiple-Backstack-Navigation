@@ -80,7 +80,7 @@ class BottomNavManager(
       val graphId = navHostFragment.navController.graph.id
                                 
       //set bottom navigation start element                         
-      if(navGraphId == startNavGraphId)
+      if(navGraphId == startNavGraphId && navHistory.size == 1)
         bottomNavigationView.selectedItemId = graphId
                                 
       navGraphStartDestinations[graphId] = navHostFragment.navController.graph.startDestination
