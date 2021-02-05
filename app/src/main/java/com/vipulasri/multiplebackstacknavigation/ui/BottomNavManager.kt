@@ -33,6 +33,8 @@ class BottomNavManager(
   // Graph Id's of the tabs
   private val navGraphIds =
     listOf(R.navigation.nav_home, R.navigation.nav_dashboard, R.navigation.nav_notifications)
+  
+  private val startNavGraphId = R.navigation.nav_home
 
   // Map of tags
   private val graphIdToTagMap = SparseArray<String>()
@@ -76,6 +78,11 @@ class BottomNavManager(
 
       // Obtain its id
       val graphId = navHostFragment.navController.graph.id
+                                
+      //set bottom navigation start element                         
+      if(navGraphId == startNavGraphId && navHistory.size == 1)
+        bottomNavigationView.selectedItemId = graphId
+                                
       navGraphStartDestinations[graphId] = navHostFragment.navController.graph.startDestination
 
       // Save to the map
@@ -207,6 +214,11 @@ class BottomNavManager(
     val navHostFragment = NavHostFragment.create(navGraphId)
     fragmentManager.beginTransaction()
         .add(containerId, navHostFragment, fragmentTag)
+        .apply {
+          //set as primary nav fragment to handle back button on start fragment
+          if(navGraphId == startNavGraphId)
+            setPrimaryNavigationFragment(navHostFragment)
+        }
         .commitNow()
     return navHostFragment
   }
@@ -220,6 +232,6 @@ class BottomNavManager(
     }
     return false
   }
-
+  
   private fun getFragmentTag(index: Int) = "BottomNavManager#$index"
 }
